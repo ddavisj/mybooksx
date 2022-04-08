@@ -1,0 +1,9 @@
+.book-search-results .content {
+   padding-left: 25px !important;
+   padding-right: 25px !important;
+   width: 350px !important;
+}
+
+.book-search-results img.image.small {
+   min-width: 128px;
+}
