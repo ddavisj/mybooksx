@@ -81,3 +81,19 @@ export const signIn = userId => {
 export const signOut = () => {
    return { type: SIGN_OUT };
 };
+
+// Device check ACs
+
+// export const isMobile = isMobile => {
+//    return { type: 'MOB_DEVICE' };
+// };
+
+export const mobDevice = () => {
+   console.log('Mobile check!');
+   return { type: 'MOB_DEVICE' };
+};
+
+export const wideDevice = () => {
+   console.log('Widescreen check!');
+   return { type: 'WIDE_DEVICE' };
+};

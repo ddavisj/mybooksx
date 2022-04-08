@@ -1,9 +1,37 @@
-.book-search-results .content {
+.wide .book-search-results .content {
    padding-left: 25px !important;
    padding-right: 25px !important;
-   width: 350px !important;
+   width: 70% !important;
 }
 
 .book-search-results img.image.small {
    min-width: 128px;
+}
+
+.mobile .book-search-results .item {
+   text-align: center;
+}
+
+.book-search-results h3.subtitle {
+   font-weight: normal;
+}
+
+.book-search-results h2.header {
+   padding-top: 10px;
+}
+
+.book-search-results .ui.button {
+   margin: 10px;
+}
+
+.book-search-results .item {
+   padding-top: 20px !important;
+}
+
+.book-search-results h3.subtitle {
+   margin-top: 10px;
+}
+
+.mobile .book-search-results h3.subtitle {
+   width: 300px;
 }

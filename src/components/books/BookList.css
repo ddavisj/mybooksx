@@ -2,12 +2,20 @@
    margin-right: 0 !important;
 }
 
-.render-admin {
+.wide .render-admin {
    margin-top: 7% !important;
 }
+.mobile .render-admin {
+   margin-top: 1% !important;
+   margin-bottom: 1% !important;
+}
 
-.book-list .content {
+.wide .book-list .content {
    padding-left: 25px !important;
    padding-right: 25px !important;
-   width: 350px !important;
+}
+
+.mobile .book-list .item {
+   padding-top: 10px !important;
+   padding-bottom: 10px !important;
 }

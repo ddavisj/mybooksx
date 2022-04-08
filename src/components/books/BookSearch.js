@@ -19,6 +19,7 @@ const BookSearch = props => {
    return (
       <div>
          <h3>Search Google Books</h3>
+         <h4 style={{ fontWeight: 'normal' }}>Add a book to your collection</h4>
          <BookSearchForm onSubmit={onSubmit} />
       </div>
    );

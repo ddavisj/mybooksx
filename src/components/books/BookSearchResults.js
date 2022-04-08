@@ -46,7 +46,7 @@ const BookSearchResults = props => {
                            description,
                         });
                      }}
-                     className="ui button"
+                     className="ui button primary"
                   >
                      Add book!
                   </button>
@@ -58,12 +58,10 @@ const BookSearchResults = props => {
             <div className="item" key={book.id}>
                <img className="image small" src={thumbNail} alt={thumbNail} />
                <div className="content">
-                  <div className="header">{title}</div>
-                  <div className="description">{subtitle}</div>
-                  <div className="description">{author}</div>
-                  <div className="description">
-                     {description ? <span>&#10004; Desc</span> : ''}
-                  </div>
+                  <h2 className="header">{title}</h2>
+                  <h3 className="subtitle">{subtitle}</h3>
+                  <h2 className="author">{author}</h2>
+                  <h4>{description ? <span>&#10004; Desc avail</span> : ''}</h4>
                </div>
                {renderAddBook()}
             </div>
@@ -77,6 +75,7 @@ const BookSearchResults = props => {
          <div className="book-search-results ui middle aligned divided list">
             {renderBookResults()}
          </div>
+         <div>&nbsp;</div>
       </div>
    );
 };

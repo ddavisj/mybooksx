@@ -7,14 +7,6 @@ const INITIAL_STATE = {
    userId: null,
 };
 
-// I named this func authReducer - he didn't but I got a linter warning..
-//.. "Assign arrow function to a variable before exporting as module"
-//.. and then exported the named func
-//.. His original code:
-// export default (state = INITIAL_STATE, action) => {
-//     switch (action.type) {
-//        case 'SIGN_IN':
-
 const authReducer = (state = INITIAL_STATE, action) => {
    switch (action.type) {
       case SIGN_IN:

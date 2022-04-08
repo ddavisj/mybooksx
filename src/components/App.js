@@ -1,16 +1,17 @@
+import './App.css';
+
 import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 
 import history from '../history';
 
 import Header from './Header';
+import Device from './Device';
 
 import BookList from './books/BookList';
-// import StreamCreate from './books/StreamCreate';
 import BookEdit from './books/BookEdit';
 import BookDelete from './books/BookDelete';
 import BookShow from './books/BookShow';
-
 import BookSearch from './books/BookSearch';
 import BookSearchResults from './books/BookSearchResults';
 
@@ -22,7 +23,8 @@ import BookSearchResults from './books/BookSearchResults';
 
 const App = () => {
    return (
-      <div className="ui container">
+      // <div className="ui container">
+      <Device className="ui container">
          <Router history={history}>
             <div>
                <Header />
@@ -45,7 +47,8 @@ const App = () => {
                </Switch>
             </div>
          </Router>
-      </div>
+      </Device>
+      // </div>
    );
 };
 

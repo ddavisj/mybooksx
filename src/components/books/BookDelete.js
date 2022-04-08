@@ -44,9 +44,9 @@ const BookDelete = props => {
 
    const renderContent = () => {
       if (!props.book) {
-         return 'Are you sure you want to delete the book:';
+         return 'Are you sure you want to delete:';
       }
-      return `Are you sure you want to delete the book: ${props.book.title}?`;
+      return `Are you sure you want to delete: ${props.book.title}?`;
    };
 
    // Pass all relevant props to our Modal comp. Our Modal is optimised for reusability

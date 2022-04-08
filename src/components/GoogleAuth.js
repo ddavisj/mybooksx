@@ -30,7 +30,7 @@ const GoogleAuth = props => {
       });
    }, []);
 
-   // A listener is set on the auth.isSignedIn obj, and this func is run when auth changes
+   // A listener is set on the auth.isSignedIn obj above, and this func is run when auth changes
    //.. When auth status changes, pass this status and userId to the signIn AC and update
    //.. the Redux store, else run the signOut AC
    const onAuthChange = isSignedIn => {
@@ -60,14 +60,14 @@ const GoogleAuth = props => {
          return (
             <button onClick={onSignOutClick} className="ui google button">
                <i className="google icon" />
-               Sign Out
+               Logout
             </button>
          );
       } else {
          return (
             <button onClick={onSignInClick} className="ui google button">
                <i className="google icon" />
-               Sign In
+               Login
             </button>
          );
       }

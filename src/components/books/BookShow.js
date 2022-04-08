@@ -69,6 +69,7 @@ const BookShow = ({ match, book, fetchBook, currentUserId }) => {
                <p>{description}</p>
                {renderLink()}
                {renderReview()}
+               <div>&nbsp;</div>
             </div>
          </div>
       </div>

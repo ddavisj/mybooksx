@@ -14,22 +14,6 @@ const BookList = ({ fetchBooks, currentUserId, books, isSignedIn }) => {
       fetchBooks();
    }, []);
 
-   // If user is signed in, show them edit and delete links
-   const renderAdmin = book => {
-      if (book.userId === currentUserId) {
-         return (
-            <div className="render-admin right floated content middle aligned">
-               <Link to={`/books/edit/${book.id}`} className="ui button">
-                  <i className="middle aligned icon edit" />
-               </Link>
-               <Link to={`/books/delete/${book.id}`} className="ui button">
-                  <i className="middle aligned icon trash" />
-               </Link>
-            </div>
-         );
-      }
-   };
-
    const renderImage = book => {
       if (book.thumbNail) {
          return (
@@ -55,12 +39,26 @@ const BookList = ({ fetchBooks, currentUserId, books, isSignedIn }) => {
       }
    };
 
+   // Show the create button if user is signed in
+   const renderAddBook = () => {
+      if (isSignedIn) {
+         return (
+            <div style={{ textAlign: 'center' }}>
+               <Link to="/search" className="ui button primary">
+                  + Add a New Book
+               </Link>
+               <div>&nbsp;</div>
+            </div>
+         );
+      }
+   };
+
    // Map all available books - show book title and desc and admin options if user is signed in
    const renderList = () => {
       return books.map(book => {
          return (
             <div className="item" key={book.id}>
-               {renderAdmin(book)}
+               {renderAdmin(book, 'wide-only right floated')}
                {renderImage(book)}
                <div className="content">
                   <Link to={`/books/${book.id}`} className="header">
@@ -71,20 +69,25 @@ const BookList = ({ fetchBooks, currentUserId, books, isSignedIn }) => {
                      <h3>{book.author}</h3>
                   </div>
                </div>
+               {renderAdmin(book, 'mobile-only')}
             </div>
          );
       });
    };
 
-   // Show the create button if user is signed in
-   const renderCreate = () => {
-      if (isSignedIn) {
+   // If user is signed in, show them edit and delete links
+   const renderAdmin = (book, deviceClasses) => {
+      if (book.userId === currentUserId) {
          return (
-            <div style={{ textAlign: 'center' }}>
-               <Link to="/search" className="ui button primary">
-                  + Add Book
+            <div
+               className={`${deviceClasses} render-admin content middle aligned`}
+            >
+               <Link to={`/books/edit/${book.id}`} className="ui button">
+                  <i className="middle aligned icon edit" />
                </Link>
-               <div>&nbsp;</div>
+               <Link to={`/books/delete/${book.id}`} className="ui button">
+                  <i className="middle aligned icon trash" />
+               </Link>
             </div>
          );
       }
@@ -96,7 +99,8 @@ const BookList = ({ fetchBooks, currentUserId, books, isSignedIn }) => {
          <div className="book-list ui middle aligned divided list">
             {renderList()}
          </div>
-         {renderCreate()}
+         {renderAddBook()}
+         <div>&nbsp;</div>
       </div>
    );
 };

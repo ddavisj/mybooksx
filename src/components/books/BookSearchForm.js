@@ -1,6 +1,7 @@
 // This comp makes use of a library called React Final Form. It's generalised so it can be
 //.. used with StreamEdit and StreamCreate
 
+import './BookSearchForm.css';
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 
@@ -53,7 +54,10 @@ const BookForm = props => {
          // Provide a render property direct to the form..
          //.. Pass in our renderInput function above to each field
          render={({ handleSubmit }) => (
-            <form onSubmit={handleSubmit} className="ui form error">
+            <form
+               onSubmit={handleSubmit}
+               className="book-search-form ui form error"
+            >
                <Field
                   name="title"
                   component={renderInput}
@@ -74,7 +78,9 @@ const BookForm = props => {
                   component={renderInput}
                   label="Website link or review"
                /> */}
-               <button className="ui button primary">Search</button>
+               <div className="button-parent">
+                  <button className="ui button primary">Search</button>
+               </div>
             </form>
          )}
       />

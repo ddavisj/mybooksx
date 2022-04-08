@@ -1,0 +1,27 @@
+.mobile button.ui.google.button {
+   padding: 10px 15px;
+}
+
+.mobile .ui.secondary.pointing.menu {
+   margin-top: 5px;
+}
+
+@media screen and (max-width: 767px) {
+   .wide-only {
+      display: none;
+   }
+}
+
+@media screen and (min-width: 768px) {
+   .mobile-only {
+      display: none;
+   }
+}
+
+.item:first-of-type {
+   border-top: unset;
+}
+
+.mobile-only a.ui.button {
+   background: none;
+}

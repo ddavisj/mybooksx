@@ -1,5 +1,5 @@
 // This modal makes use of React's portal function to attach the modal to the index.html's #modal div
-
+import './Modal.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
