@@ -43,8 +43,17 @@ export const createBook = bookData => async (dispatch, getState) => {
 //// The following ACs enable CRUD operations via the API (and Axios stream client)
 
 // Fetch all records from the API and load into the store
+export const loadBooks = () => async dispatch => {
+   const response = await myBooks.get('/books');
+   if (response.data) {
+      console.log('Nuthin');
+   }
+
+   dispatch({ type: FETCH_BOOKS, payload: response.data });
+};
 export const fetchBooks = () => async dispatch => {
    const response = await myBooks.get('/books');
+   // console.log(response);
 
    dispatch({ type: FETCH_BOOKS, payload: response.data });
 };

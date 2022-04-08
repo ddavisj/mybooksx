@@ -1,0 +1,12 @@
+.mobile button.ui.google.button.logged-out {
+   color: #dae2d5;
+   background-color: #3f6766;
+}
+.mobile button.ui.google.button.logged-in {
+   color: #3f6766;
+   background-color: #dae2d5;
+}
+
+.margin-auto {
+   margin: auto !important;
+}

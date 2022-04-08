@@ -1,3 +1,7 @@
+body {
+   background-color: #dae2d5;
+}
+
 .mobile button.ui.google.button {
    padding: 8px 12px;
 }

@@ -1,3 +1,4 @@
+import './GoogleAuth.css';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { signIn, signOut } from '../actions';
@@ -52,28 +53,39 @@ const GoogleAuth = props => {
       history.push('/');
    };
 
+   // Render the button itself, pass in AC and text
+   const renderAuthButton = (ac, text, loggedIn) => {
+      return (
+         <button
+            onClick={ac}
+            className={`ui google button ${
+               loggedIn ? 'logged-in' : 'logged-out'
+            }`}
+         >
+            <i className="google icon" />
+            {text}
+         </button>
+      );
+   };
+
    // Render the sign in with Google Button
-   const renderAuthButton = () => {
+   const renderAuthDiv = () => {
       if (props.isSignedIn === null) {
-         return null;
+         return renderAuthButton(
+            () => {
+               console.log('loading');
+            },
+            '.............',
+            true
+         );
       } else if (props.isSignedIn) {
-         return (
-            <button onClick={onSignOutClick} className="ui google button">
-               <i className="google icon" />
-               Logout
-            </button>
-         );
+         return renderAuthButton(onSignOutClick, 'Logout', true);
       } else {
-         return (
-            <button onClick={onSignInClick} className="ui google button">
-               <i className="google icon" />
-               Login
-            </button>
-         );
+         return renderAuthButton(onSignInClick, 'Login', false);
       }
    };
 
-   return <div>{renderAuthButton()}</div>;
+   return <div className="margin-auto">{renderAuthDiv()}</div>;
 };
 
 const mapStateToProps = state => {

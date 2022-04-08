@@ -52,4 +52,23 @@ const App = () => {
    );
 };
 
+// function checkLocal() {
+//    switch (window.location.protocol) {
+//       case 'http:':
+//          // case 'https:':
+//          //remote file over http or https
+//          console.log('Running on the net');
+//          break;
+//       case 'file:':
+//          //local file
+//          console.log('Running locally');
+//          break;
+//       default:
+//          console.log('Running wtf knows where');
+//       //some other protocol
+//    }
+// }
+
+// checkLocal();
+
 export default App;
