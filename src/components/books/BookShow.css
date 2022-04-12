@@ -5,3 +5,8 @@
 .show-book h2 {
    margin-bottom: 3px;
 }
+
+.edit-book {
+   padding-top: 5px;
+   display: block;
+}

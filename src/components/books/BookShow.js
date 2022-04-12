@@ -1,6 +1,7 @@
 import './BookShow.css';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { fetchBook } from '../../actions';
 
@@ -28,7 +29,7 @@ const BookShow = ({ match, book, fetchBook, currentUserId }) => {
       if (link) {
          return (
             <h4>
-               <a href={link} title={link} target="_blank">
+               <a href={link} title={link} target="_blank" rel="noreferrer">
                   Official Website
                </a>
             </h4>
@@ -39,7 +40,7 @@ const BookShow = ({ match, book, fetchBook, currentUserId }) => {
       if (review) {
          return (
             <h4>
-               <a href={review} title={review} target="_blank">
+               <a href={review} title={review} target="_blank" rel="noreferrer">
                   Review
                </a>
             </h4>
@@ -49,7 +50,11 @@ const BookShow = ({ match, book, fetchBook, currentUserId }) => {
 
    const renderAdmin = () => {
       if (userId === currentUserId) {
-         return <a href={`/books/edit/${book.id}`}>Edit</a>;
+         return (
+            <Link className="edit-book" to={`/books/edit/${book.id}`}>
+               Edit
+            </Link>
+         );
       }
    };
 

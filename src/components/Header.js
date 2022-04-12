@@ -6,15 +6,15 @@ import GoogleAuth from './GoogleAuth';
 
 const Header = () => {
    return (
-      <div className="ui secondary pointing menu margin-auto">
+      <div className="ui secondary pointing menu">
          <Link to="/" className="item">
             <img
                alt="MyBooks"
-               src="/mybooks-logo.png"
+               src="/mybooks-banner.png"
                style={{ width: '95px' }}
             />
          </Link>
-         <div className="right menu margin-auto">
+         <div className="right menu">
             <Link to="/search" className="item">
                <i className="search icon"></i>
                Search

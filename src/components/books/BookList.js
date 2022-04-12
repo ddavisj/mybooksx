@@ -1,25 +1,55 @@
 // This comp lists all available streams on the index page
 
 import './BookList.css';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { fetchBooks } from '../../actions';
+import Footer from '../Footer';
+import Spinner from '../Spinner';
 
 // Destructure all props in the comp definition
 const BookList = ({ fetchBooks, currentUserId, books, isSignedIn }) => {
-   // Fetch all books
+   const [imgsLoaded, setImgsLoaded] = useState(false);
+
    useEffect(() => {
-      fetchBooks();
+      const awaitFetchBooks = async () => {
+         await fetchBooks();
+      };
+      awaitFetchBooks();
+
+      const loadImage = imageUrl => {
+         return new Promise((resolve, reject) => {
+            const loadImg = new Image();
+            loadImg.src = imageUrl;
+            loadImg.onload = () => resolve(imageUrl);
+
+            loadImg.onerror = err => reject(err);
+         });
+      };
+
+      const bookThumbnails = books.map(book => {
+         return book.thumbNail;
+      });
+
+      const awaitImages = async () => {
+         await Promise.all(bookThumbnails.map(imageUrl => loadImage(imageUrl)))
+            .then(() => {
+               console.log('All loaded!');
+               setImgsLoaded(true);
+            })
+            .catch(err => console.log('Failed to load images', err));
+      };
+      awaitImages();
    }, []);
 
    const renderImage = book => {
       if (book.thumbNail) {
          return (
-            <a className="image" href={`/books/${book.id}`}>
+            <Link className="image" to={`/books/${book.id}`}>
                <img src={book.thumbNail} alt={book.thumbNail} />
-            </a>
+            </Link>
          );
       } else {
          return <i className="large middle aligned icon book" />;
@@ -66,7 +96,9 @@ const BookList = ({ fetchBooks, currentUserId, books, isSignedIn }) => {
                   </Link>
                   {renderSubtitle(book)}
                   <div className="description">
-                     <h3>{book.author}</h3>
+                     <h3 style={{ textTransform: 'capitalize' }}>
+                        {book.author.toLowerCase()}
+                     </h3>
                   </div>
                </div>
                {renderAdmin(book, 'mobile-only')}
@@ -93,14 +125,24 @@ const BookList = ({ fetchBooks, currentUserId, books, isSignedIn }) => {
       }
    };
 
+   if (imgsLoaded) {
+      return (
+         <div>
+            <h2>My Books</h2>
+            <div className="book-list ui middle aligned divided list">
+               {renderList()}
+            </div>
+            {renderAddBook()}
+            <div>&nbsp;</div>
+            <Footer />
+         </div>
+      );
+   }
    return (
       <div>
          <h2>My Books</h2>
-         <div className="book-list ui middle aligned divided list">
-            {renderList()}
-         </div>
-         {renderAddBook()}
-         <div>&nbsp;</div>
+         <div className="book-list ui middle aligned divided list"></div>
+         <Spinner message="Loading.." />
       </div>
    );
 };
