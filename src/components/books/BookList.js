@@ -98,7 +98,6 @@ const BookList = ({ fetchBooks, currentUserId, books, isSignedIn }) => {
 
    // Map all available books - show book title and desc and admin options if user is signed in
    const renderList = () => {
-      books = books.reverse();
       return books.map(book => {
          return (
             <div className="item" key={book.id}>
@@ -166,7 +165,7 @@ const BookList = ({ fetchBooks, currentUserId, books, isSignedIn }) => {
 //.. This lets us map the books array in the normal way
 const mapStateToProps = state => {
    return {
-      books: Object.values(state.books),
+      books: Object.values(state.books).reverse(),
       currentUserId: state.auth.userId,
       isSignedIn: state.auth.isSignedIn,
    };
