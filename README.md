@@ -50,6 +50,8 @@ Redux is a platform agnostic technology that allows the storing of data in a cen
 
 -  reducers: Redux reducers
 
-# Additional Files
+# Additional Key Files
 
 -  history.js: this file lets us bypass the default router BrowserRouter and manually create our own history object to enable programmatic navigation from within Redux action creators, ie. create custom redirects when certain actions occur. These redirects cannot be initiated from within action creators by using the standard BrowserRouter history obj.
+
+-  Procfile: signals to Heroku how to initiate the app
