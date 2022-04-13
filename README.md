@@ -36,9 +36,11 @@ Redux is a platform agnostic technology that allows the storing of data in a cen
 
 ## Root-level Folders
 
--  client: all code and componentry related to the React-Redux side of the application
+On my laptop, I created two main folders:
 
--  api: code related to the API server, powered by JSON-Server
+-  client: all code and componentry related to the React-Redux side of the application. This code has been uploaded to GitHub
+
+-  api: code related to the API server, powered by JSON-Server. This code is not on GitHub but runs on a separate 'dyno' (server) on Heroku
 
 ## Folders within src
 
