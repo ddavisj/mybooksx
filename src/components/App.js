@@ -24,7 +24,6 @@ import BookSearchResults from './books/BookSearchResults';
 
 const App = () => {
    return (
-      // <div className="ui container">
       <Device className="ui container">
          <Router history={history}>
             <div>
@@ -37,7 +36,6 @@ const App = () => {
                      component={BookSearchResults}
                   />
                   <Route path="/" exact component={BookList} />
-                  {/* <Route path="/streams/new" exact component={StreamCreate} /> */}
                   <Route path="/books/:id" exact component={BookShow} />
                   <Route path="/books/edit/:id" exact component={BookEdit} />
                   <Route
@@ -49,27 +47,7 @@ const App = () => {
             </div>
          </Router>
       </Device>
-      // </div>
    );
 };
-
-// function checkLocal() {
-//    switch (window.location.protocol) {
-//       case 'http:':
-//          // case 'https:':
-//          //remote file over http or https
-//          console.log('Running on the net');
-//          break;
-//       case 'file:':
-//          //local file
-//          console.log('Running locally');
-//          break;
-//       default:
-//          console.log('Running wtf knows where');
-//       //some other protocol
-//    }
-// }
-
-// checkLocal();
 
 export default App;

@@ -1,3 +1,5 @@
+// This comp lists the search results
+
 import './BookSearchResults.css';
 
 import React from 'react';
@@ -8,12 +10,13 @@ import history from '../../history';
 
 const BookSearchResults = props => {
    const renderBookResults = () => {
-      // The bookSearchResults arr exists but is empty!
+      // If the bookSearchResults arr exists but is empty - return to the search page
       if (props.bookSearchResults.length === 0) {
          history.push('/search');
          return;
       }
 
+      // Return properties only if they exist
       return props.bookSearchResults.map(book => {
          const author = book.volumeInfo.authors
             ? book.volumeInfo.authors[0]
@@ -33,6 +36,7 @@ const BookSearchResults = props => {
             ? book.volumeInfo.description
             : '';
 
+         // Show the Add Book button, and initiate the AC with all relevant props
          const renderAddBook = () => {
             if (props.isSignedIn) {
                return (
@@ -54,6 +58,7 @@ const BookSearchResults = props => {
             }
          };
 
+         // Display the book items
          return (
             <div className="item" key={book.id}>
                <img className="image small" src={thumbNail} alt={thumbNail} />

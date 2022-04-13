@@ -1,5 +1,5 @@
 // This comp makes use of a library called React Final Form. It's generalised so it can be
-//.. used with StreamEdit and StreamCreate
+//.. used with BookEdit and BookCreate
 
 import './BookSearchForm.css';
 import React from 'react';

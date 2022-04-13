@@ -1,3 +1,5 @@
+// Show a spinner while loading - default text is Loading
+
 import React from 'react';
 
 const Spinner = props => {

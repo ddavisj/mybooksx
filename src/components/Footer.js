@@ -1,3 +1,5 @@
+// Display a v basic footer - only used in BookList
+
 import React from 'react';
 
 const Footer = () => {

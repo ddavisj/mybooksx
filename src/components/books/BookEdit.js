@@ -9,7 +9,7 @@ import { fetchBook, editBook } from '../../actions';
 import BookForm from './BookForm';
 
 const BookEdit = props => {
-   // Fetch the current stream
+   // Fetch the current book
    useEffect(() => {
       props.fetchBook(props.match.params.id);
    }, []);
@@ -19,8 +19,8 @@ const BookEdit = props => {
       props.editBook(props.match.params.id, formValues);
    };
 
-   // If the stream hasn't yet loaded.. (if the user refreshes the page or accesses it
-   //.. directly, current stream data won't have been prev loaded)
+   // If the book hasn't yet loaded.. (if the user refreshes the page or accesses it
+   //.. directly, current book data won't have been prev loaded)
    if (!props.book) {
       return <div>Loading...</div>;
    }

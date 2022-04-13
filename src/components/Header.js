@@ -1,4 +1,5 @@
 // Links prevent refreshes and clearing of memory, and unnec loading of files when a user clicks a link
+
 import './Header.css';
 import React from 'react';
 import { Link } from 'react-router-dom';

@@ -1,4 +1,4 @@
-// This comp lists all available streams on the index page
+// This comp lists all added books on the home page
 
 import './BookList.css';
 import React, { useEffect, useState } from 'react';
@@ -13,10 +13,14 @@ import Spinner from '../Spinner';
 const BookList = ({ fetchBooks, currentUserId, books, isSignedIn }) => {
    const [imgsLoaded, setImgsLoaded] = useState(false);
 
+   // Fetch all books from the API
    useEffect(() => {
       fetchBooks();
    }, []);
 
+   // Pre-load all images before displaying the book-list
+   //.. Need a separate useEffect for this as otherwise we get an infinite loop,
+   //.. ie. books updates, fetchBooks fetches again, books updates again, fetchBooks again..
    useEffect(() => {
       const loadImage = imageUrl => {
          return new Promise((resolve, reject) => {
@@ -32,6 +36,11 @@ const BookList = ({ fetchBooks, currentUserId, books, isSignedIn }) => {
          return book.thumbNail;
       });
 
+      // If the books arr has no books.. don't run (default is to display the spinner)
+      //.. Else, if books contains items, pre-load all images and set imgsLoaded to true
+      //.. (trigger renderList) and show the book-list
+      // Note: the dep array lists books, so when the books arr is updated, this rerenders
+      // (awaitImages is a separate func bc we can't use async at top-level in useEffect)
       if (books.length !== 0) {
          const awaitImages = async () => {
             await Promise.all(
@@ -40,7 +49,6 @@ const BookList = ({ fetchBooks, currentUserId, books, isSignedIn }) => {
                })
             )
                .then(() => {
-                  console.log('All loaded!');
                   setImgsLoaded(true);
                })
                .catch(err => console.log('Failed to load images', err));
@@ -90,6 +98,7 @@ const BookList = ({ fetchBooks, currentUserId, books, isSignedIn }) => {
 
    // Map all available books - show book title and desc and admin options if user is signed in
    const renderList = () => {
+      books = books.reverse();
       return books.map(book => {
          return (
             <div className="item" key={book.id}>
@@ -147,7 +156,7 @@ const BookList = ({ fetchBooks, currentUserId, books, isSignedIn }) => {
       <div>
          <h2>My Books</h2>
          <div className="book-list ui middle aligned divided list"></div>
-         <Spinner message="Loading.." />
+         <Spinner message="Loading books.." />
       </div>
    );
 };
