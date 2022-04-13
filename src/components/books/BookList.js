@@ -14,11 +14,10 @@ const BookList = ({ fetchBooks, currentUserId, books, isSignedIn }) => {
    const [imgsLoaded, setImgsLoaded] = useState(false);
 
    useEffect(() => {
-      const awaitFetchBooks = async () => {
-         await fetchBooks();
-      };
-      awaitFetchBooks();
+      fetchBooks();
+   }, []);
 
+   useEffect(() => {
       const loadImage = imageUrl => {
          return new Promise((resolve, reject) => {
             const loadImg = new Image();
@@ -33,16 +32,22 @@ const BookList = ({ fetchBooks, currentUserId, books, isSignedIn }) => {
          return book.thumbNail;
       });
 
-      const awaitImages = async () => {
-         await Promise.all(bookThumbnails.map(imageUrl => loadImage(imageUrl)))
-            .then(() => {
-               console.log('All loaded!');
-               setImgsLoaded(true);
-            })
-            .catch(err => console.log('Failed to load images', err));
-      };
-      awaitImages();
-   }, []);
+      if (books.length !== 0) {
+         const awaitImages = async () => {
+            await Promise.all(
+               bookThumbnails.map(thumbNail => {
+                  return loadImage(thumbNail);
+               })
+            )
+               .then(() => {
+                  console.log('All loaded!');
+                  setImgsLoaded(true);
+               })
+               .catch(err => console.log('Failed to load images', err));
+         };
+         awaitImages();
+      }
+   }, [books]);
 
    const renderImage = book => {
       if (book.thumbNail) {
