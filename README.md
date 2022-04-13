@@ -20,49 +20,36 @@ Redux is a platform agnostic technology that allows the storing of data in a cen
 
 # Additional Node Modules and Add-ons
 
--  Axios
-   Axios was used to make asynchronous requests (ie. requests that take a finite amount of time) to our API server
+-  Axios: Lets us make asynchronous requests (ie. requests that take a finite amount of time) to our API server
 
--  JSON-Server
-   This is a popular server based on RESTful conventions, this was used to power CRUD operations within the app
+-  JSON-Server: A popular server based on RESTful conventions, this was used to power CRUD operations within the app
 
--  React-Final-Form
-   This library enables and greatly simplifies the process of creating forms within the React-Redux ecosystem
+-  React-Final-Form: Enables and greatly simplifies the process of creating forms within the React-Redux ecosystem
 
--  React Portals
-   React portals enable the creation of a Modal component. Portal components are not nested in the component hierarchy but can be inserted directly into the index.html file
+-  React Portals: Enable the creation of Modal components. Portal components are not nested in the component hierarchy but can be inserted directly into the index.html file
 
--  React-Router-DOM
-   This library was used to map paths to routes. This lets us specify what components will be loaded at specific urls
+-  React-Router-DOM: Map paths to routes, this lets us specify what components will be loaded at specific urls. Create page Links that bypass refresh enabling the maintenance of data stored within client memory
 
--  Redux-Thunk
-   A library that enables the processing of asynchronous requests within Redux, ie. requests made to an API or external data source
+-  Redux-Thunk: enables the processing of asynchronous requests within Redux, ie. requests made to an API or external data source
 
 # Main Folders
 
 ## Root-level Folders
 
--  client:
-   All code and componentry related to the React-Redux side of the application
+-  client: all code and componentry related to the React-Redux side of the application
 
--  api:
-   Code related to the API server, powered by JSON-Server
+-  api: code related to the API server, powered by JSON-Server
 
 ## Folders within the src parent dir (within the client parent dir):
 
--  actions:
-   This folder contains all action creators
+-  actions: contains all action creators
 
--  apis:
-   Axios clients, ie. functions that form the basis for requests made in this case to our api
+-  apis: Axios clients, ie. functions that form the basis for requests made in this case to our api
 
--  components:
-   All React components in this app
+-  components: React components
 
--  reducers:
-   All Redux reducers
+-  reducers: Redux reducers
 
 # Additional Files
 
--  history.js:
-   This file lets us bypass the default router BrowserRouter and manually create our own history object to enable programmatic navigation from within Redux action creators, ie. create custom redirects when certain actions occur. These redirects cannot be initiated from within action creators by using the standard BrowserRouter history obj.
+-  history.js: this file lets us bypass the default router BrowserRouter and manually create our own history object to enable programmatic navigation from within Redux action creators, ie. create custom redirects when certain actions occur. These redirects cannot be initiated from within action creators by using the standard BrowserRouter history obj.
