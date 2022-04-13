@@ -40,7 +40,7 @@ Redux is a platform agnostic technology that allows the storing of data in a cen
 
 -  api: code related to the API server, powered by JSON-Server
 
-## Folders within the src parent dir (within the client parent dir):
+## Folders within src
 
 -  actions: contains all action creators
 
